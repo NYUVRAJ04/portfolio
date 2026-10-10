@@ -1,0 +1,7 @@
+$kind: http-request
+method: GET
+url: '{{baseUrl}}/v1/projects/:id'
+order: 2000
+pathVariables:
+  - key: id
+    value: '00000000-0000-0000-0000-000000000000'

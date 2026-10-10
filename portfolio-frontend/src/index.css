@@ -1,0 +1,1434 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  --background: #07090d;
+  --surface: #0d1016;
+  --surface-light: #141820;
+
+  --border: #292f38;
+  --border-light: #363d47;
+
+  --text: #f5f5f5;
+  --text-secondary: #9ca3af;
+  --text-muted: #626a76;
+
+  --accent: #e10600;
+  --accent-dark: #9d0500;
+
+  --success: #54d68c;
+
+  --hud-height: 76px;
+
+  font-family: "Inter", sans-serif;
+  color: var(--text);
+
+  background: var(--background);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+
+  background: var(--background);
+
+  scroll-behavior: smooth;
+
+  scroll-snap-type: y proximity;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+  min-width: 320px;
+
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(225, 6, 0, 0.08),
+      transparent 35%
+    ),
+    var(--background);
+
+  color: var(--text);
+
+  overflow-x: hidden;
+}
+
+body,
+button,
+input,
+textarea {
+  font-family: "Inter", sans-serif;
+}
+
+button,
+input,
+textarea {
+  font-size: inherit;
+}
+
+button {
+  border: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* =========================================
+   ROOT
+========================================= */
+
+#root {
+  min-height: 100vh;
+}
+
+.portfolio-app {
+  position: relative;
+
+  min-height: 100vh;
+
+  overflow-x: hidden;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.015) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      rgba(255, 255, 255, 0.015) 1px,
+      transparent 1px
+    );
+
+  background-size: 80px 80px;
+}
+
+/* =========================================
+   RACE WORLD
+========================================= */
+
+.race-world {
+  position: relative;
+
+  z-index: 2;
+}
+
+.race-section-wrapper {
+  position: relative;
+
+  min-height: 100vh;
+
+  scroll-snap-align: start;
+}
+
+/* =========================================
+   SECTION
+========================================= */
+
+.race-section {
+  position: relative;
+
+  min-height: 100vh;
+
+  display: flex;
+
+  align-items: center;
+
+  padding:
+    calc(var(--hud-height) + 50px)
+    10%
+    80px;
+
+  overflow: visible;
+}
+
+/*
+ * Dark readable layer over the track.
+ */
+.race-section::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(7, 9, 13, 0.98) 0%,
+      rgba(7, 9, 13, 0.90) 30%,
+      rgba(7, 9, 13, 0.55) 60%,
+      rgba(7, 9, 13, 0.15) 100%
+    );
+}
+
+/*
+ * Subtle red glow.
+ */
+.race-section::after {
+  content: "";
+
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  right: -200px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(225, 6, 0, 0.10),
+      transparent 70%
+    );
+
+  pointer-events: none;
+}
+
+/* =========================================
+   SECTION CONTENT
+========================================= */
+
+.section-inner {
+  position: relative;
+
+  z-index: 5;
+
+  width: 100%;
+
+  max-width: 720px;
+
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.section-kicker {
+  display: inline-block;
+
+  margin-bottom: 18px;
+
+  color: var(--accent);
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+}
+
+.section-inner h1,
+.section-inner h2 {
+  margin: 0;
+
+  font-family:
+    "Barlow Condensed",
+    sans-serif;
+
+  font-weight: 900;
+
+  text-transform: uppercase;
+
+  line-height: 0.82;
+
+  letter-spacing: -2px;
+}
+
+.section-inner h1 {
+  font-size:
+    clamp(80px, 12vw, 170px);
+}
+
+.section-inner h2 {
+  font-size:
+    clamp(70px, 10vw, 130px);
+}
+
+.section-inner h1 span {
+  display: block;
+
+  color: var(--accent);
+}
+
+.section-inner p {
+  max-width: 600px;
+
+  margin:
+    25px 0 0;
+
+  color: var(--text-secondary);
+
+  font-size: 14px;
+
+  line-height: 1.9;
+}
+
+.section-inner .role {
+  margin-top: 25px;
+
+  color: var(--text) !important;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+}
+
+/* =========================================
+   START BUTTON
+========================================= */
+
+.race-button {
+  position: relative;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  margin-top: 32px;
+
+  padding:
+    15px
+    24px;
+
+  background: var(--accent);
+
+  color: #ffffff;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.race-button:hover {
+  background: #ff1008;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 30px rgba(225, 6, 0, 0.25);
+}
+
+.race-button:active {
+  transform: translateY(0);
+}
+
+/* =========================================
+   DRIVER SECTION
+========================================= */
+
+.driver-section {
+  background:
+    radial-gradient(
+      circle at 65% 50%,
+      rgba(225, 6, 0, 0.12),
+      transparent 30%
+    );
+}
+
+/* =========================================
+   HUD
+========================================= */
+
+.race-hud {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 100;
+
+  height: var(--hud-height);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding:
+    0 5%;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(5, 7, 10, 0.97),
+      rgba(5, 7, 10, 0.78)
+    );
+
+  border-bottom:
+    1px solid var(--border);
+
+  backdrop-filter: blur(15px);
+}
+
+.hud-driver {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+.hud-logo {
+  width: 40px;
+  height: 40px;
+
+  display: grid;
+
+  place-items: center;
+
+  background: var(--accent);
+
+  color: white;
+
+  font-family:
+    "Barlow Condensed",
+    sans-serif;
+
+  font-size: 18px;
+
+  font-weight: 900;
+}
+
+.hud-driver span,
+.hud-status span,
+.hud-lap span {
+  display: block;
+
+  color: var(--text-muted);
+
+  font-size: 8px;
+
+  font-weight: 600;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+}
+
+.hud-driver strong {
+  display: block;
+
+  margin-top: 2px;
+
+  font-family:
+    "Barlow Condensed",
+    sans-serif;
+
+  font-size: 16px;
+
+  letter-spacing: 1px;
+}
+
+.hud-lap {
+  display: flex;
+
+  align-items: baseline;
+
+  gap: 7px;
+}
+
+.hud-lap strong {
+  color: var(--accent);
+
+  font-family:
+    "Barlow Condensed",
+    sans-serif;
+
+  font-size: 30px;
+}
+
+.hud-lap small {
+  color: var(--text-muted);
+
+  font-family:
+    "Barlow Condensed",
+    sans-serif;
+
+  font-size: 14px;
+}
+
+.hud-status {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+.hud-status strong {
+  color: var(--success);
+
+  font-size: 9px;
+
+  letter-spacing: 1px;
+}
+
+.hud-status i {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: var(--success);
+
+  box-shadow:
+    0 0 12px var(--success);
+}
+
+/* =========================================
+   RIGHT RACE NAVIGATION
+========================================= */
+
+.race-navigation {
+  position: fixed;
+
+  top: 50%;
+
+  right: 25px;
+
+  z-index: 100;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+
+  transform:
+    translateY(-50%);
+}
+
+.race-nav-item {
+  position: relative;
+
+  width: 135px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding:
+    10px
+    12px;
+
+  border:
+    1px solid var(--border);
+
+  background:
+    rgba(7, 9, 13, 0.85);
+
+  color: var(--text-muted);
+
+  font-size: 8px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.5px;
+
+  text-align: left;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(10px);
+
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.race-nav-item:hover {
+  border-color:
+    var(--border-light);
+
+  color: var(--text);
+}
+
+.race-nav-item.active {
+  border-color: var(--accent);
+
+  background:
+    rgba(225, 6, 0, 0.10);
+
+  color: white;
+}
+
+.race-nav-number {
+  min-width: 22px;
+
+  color: var(--text-muted);
+
+  font-family:
+    "Barlow Condensed",
+    sans-serif;
+
+  font-size: 14px;
+}
+
+.race-nav-item.active
+.race-nav-number {
+  color: var(--accent);
+}
+
+.race-nav-title {
+  white-space: nowrap;
+}
+
+/* =========================================
+   TELEMETRY
+========================================= */
+
+.telemetry-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  margin-top: 40px;
+
+  border-top:
+    1px solid var(--border-light);
+
+  border-bottom:
+    1px solid var(--border-light);
+}
+
+.telemetry-grid > div {
+  padding: 20px;
+
+  border-right:
+    1px solid var(--border-light);
+}
+
+.telemetry-grid > div:last-child {
+  border-right: 0;
+}
+
+.telemetry-grid span {
+  display: block;
+
+  color: var(--text-muted);
+
+  font-size: 8px;
+
+  letter-spacing: 2px;
+}
+
+.telemetry-grid strong {
+  display: block;
+
+  margin-top: 8px;
+
+  font-family:
+    "Barlow Condensed",
+    sans-serif;
+
+  font-size: 18px;
+}
+
+/* =========================================
+   CAREER
+========================================= */
+
+.career-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 15px;
+
+  margin-top: 40px;
+
+  max-width: 700px;
+}
+
+.career-card {
+  padding: 22px;
+
+  border:
+    1px solid var(--border);
+
+  background:
+    rgba(13, 16, 22, 0.75);
+
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.career-card:hover {
+  border-color:
+    var(--border-light);
+
+  transform:
+    translateX(5px);
+}
+
+.career-card > span {
+  color: var(--accent);
+
+  font-size: 8px;
+
+  letter-spacing: 2px;
+}
+
+.career-card h3 {
+  margin:
+    10px 0 4px;
+
+  font-family:
+    "Barlow Condensed",
+    sans-serif;
+
+  font-size: 27px;
+
+  text-transform: uppercase;
+}
+
+.career-card strong {
+  color: var(--text-secondary);
+
+  font-size: 11px;
+}
+
+.project-card-button {
+  margin-top: 15px;
+  padding: 11px 17px;
+  border: 1px solid var(--border-light);
+  background: transparent;
+  color: var(--text);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.project-card-button:hover {
+  border-color: var(--accent);
+  background: rgba(225, 6, 0, 0.08);
+}
+
+.experience-missions {
+  margin-top: 15px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.project-details {
+  margin-top: 15px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.experience-missions h4 {
+  margin: 8px 0;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.project-details h4 {
+  margin: 8px 0;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+/* =========================================
+   TECHNOLOGIES
+========================================= */
+
+.technology {
+  display: inline-block;
+
+  margin:
+    5px
+    5px
+    0 0;
+
+  padding:
+    5px
+    8px;
+
+  border:
+    1px solid var(--border);
+
+  color: var(--text-muted);
+
+  font-size: 8px;
+
+  letter-spacing: 0.5px;
+}
+
+/* =========================================
+   GARAGE
+========================================= */
+
+.skill-list {
+  width: 620px;
+
+  max-width: 100%;
+
+  margin-top: 40px;
+}
+
+.category-filter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+  color: var(--text-secondary);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.category-filter select {
+  padding: 9px 12px;
+  border: 1px solid var(--border-light);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 11px;
+}
+
+.skill {
+  margin-bottom: 22px;
+}
+
+.skill-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  margin-bottom: 7px;
+}
+
+.skill span {
+  color: var(--text-secondary);
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  letter-spacing: 1px;
+}
+
+.skill strong {
+  font-family:
+    "Barlow Condensed",
+    sans-serif;
+
+  font-size: 18px;
+}
+
+.skill-track {
+  width: 100%;
+
+  height: 5px;
+
+  overflow: hidden;
+
+  background:
+    #242932;
+}
+
+.skill-track div {
+  height: 100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--accent-dark),
+      var(--accent)
+    );
+}
+
+/* =========================================
+   PROJECTS
+========================================= */
+
+.project-card {
+  width: 650px;
+
+  max-width: 100%;
+
+  margin-top: 40px;
+
+  padding: 30px;
+
+  border:
+    1px solid var(--border-light);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(20, 24, 32, 0.95),
+      rgba(9, 12, 17, 0.95)
+    );
+}
+
+.project-card span {
+  color: var(--accent);
+
+  font-size: 8px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+.project-card h3 {
+  margin:
+    12px 0;
+
+  font-family:
+    "Barlow Condensed",
+    sans-serif;
+
+  font-size: 32px;
+
+  line-height: 1;
+}
+
+.project-card button {
+  margin-top: 15px;
+
+  padding:
+    11px
+    17px;
+
+  border:
+    1px solid var(--border-light);
+
+  background: transparent;
+
+  color: var(--text);
+
+  font-size: 8px;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.project-card button:hover {
+  border-color: var(--accent);
+
+  background:
+    rgba(225, 6, 0, 0.08);
+}
+
+.project-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.project-list .project-card {
+  width: auto;
+  margin-top: 0;
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.project-links a {
+  color: var(--text);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.project-links a:hover {
+  color: var(--accent);
+}
+
+.contact-form {
+  display: grid;
+  gap: 16px;
+  max-width: 560px;
+  margin-top: 28px;
+}
+
+.contact-form label {
+  display: grid;
+  gap: 7px;
+  color: var(--text-secondary);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-light);
+  border-radius: 0;
+  background: rgba(13, 16, 22, 0.85);
+  color: var(--text);
+  font-size: 13px;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: 1px solid var(--accent);
+  border-color: var(--accent);
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+.contact-form .race-button {
+  justify-self: start;
+}
+
+.race-button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+/* =========================================
+   TROPHY
+========================================= */
+
+.achievement-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 15px;
+
+  margin-top: 40px;
+
+  max-width: 700px;
+}
+
+.achievement-card {
+  padding: 25px;
+
+  border:
+    1px solid var(--border);
+
+  background:
+    rgba(13, 16, 22, 0.8);
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.achievement-card:hover {
+  transform:
+    translateY(-4px);
+
+  border-color:
+    var(--border-light);
+}
+
+.achievement-icon {
+  font-size: 30px;
+}
+
+.achievement-card h3 {
+  margin:
+    15px 0 5px;
+
+  font-family:
+    "Barlow Condensed",
+    sans-serif;
+
+  font-size: 23px;
+
+  text-transform: uppercase;
+}
+
+.achievement-card strong {
+  display: inline-block;
+
+  margin-top: 10px;
+
+  color: var(--accent);
+
+  font-family:
+    "Barlow Condensed",
+    sans-serif;
+
+  font-size: 18px;
+}
+
+/* =========================================
+   TROPHY TELEMETRY
+========================================= */
+
+.trophy {
+  display: grid;
+
+  grid-template-columns:
+    100px
+    repeat(3, 1fr);
+
+  width: 700px;
+
+  max-width: 100%;
+
+  margin-top: 40px;
+
+  border:
+    1px solid var(--border);
+}
+
+.trophy > div {
+  padding: 20px;
+
+  border-right:
+    1px solid var(--border);
+}
+
+.trophy > div:last-child {
+  border-right: 0;
+}
+
+.trophy-icon {
+  display: grid;
+
+  place-items: center;
+
+  font-size: 35px;
+}
+
+.trophy span {
+  display: block;
+
+  color: var(--text-muted);
+
+  font-size: 8px;
+
+  letter-spacing: 2px;
+}
+
+.trophy strong {
+  display: block;
+
+  margin-top: 6px;
+
+  font-family:
+    "Barlow Condensed",
+    sans-serif;
+
+  font-size: 27px;
+}
+
+/* =========================================
+   VIGNETTE
+========================================= */
+
+.viewport-vignette {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 90;
+
+  pointer-events: none;
+
+  box-shadow:
+    inset 0 0 100px rgba(0, 0, 0, 0.45);
+}
+
+/* =========================================
+   SELECTION
+========================================= */
+
+::selection {
+  background: var(--accent);
+
+  color: white;
+}
+
+/* =========================================
+   SCROLLBAR
+========================================= */
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #07090d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #343a43;
+
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1000px) {
+  .race-navigation {
+    right: 12px;
+  }
+
+  .race-nav-item {
+    width: 105px;
+  }
+
+  .race-nav-title {
+    font-size: 7px;
+  }
+
+  .race-section {
+    padding-left: 7%;
+    padding-right: 18%;
+  }
+}
+
+@media (max-width: 700px) {
+  :root {
+    --hud-height: 65px;
+  }
+
+  .race-hud {
+    padding:
+      0 20px;
+  }
+
+  .hud-lap {
+    display: none;
+  }
+
+  .hud-driver strong {
+    font-size: 14px;
+  }
+
+  .race-navigation {
+    top: auto;
+    right: 0;
+    bottom: 0;
+
+    left: 0;
+
+    height: 55px;
+
+    display: grid;
+
+    grid-template-columns:
+      repeat(7, 1fr);
+
+    gap: 0;
+
+    transform: none;
+
+    background:
+      rgba(7, 9, 13, 0.95);
+
+    border-top:
+      1px solid var(--border);
+
+    backdrop-filter: blur(15px);
+  }
+
+  .race-nav-item {
+    width: 100%;
+
+    height: 55px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 5px;
+
+    border: 0;
+
+    border-right:
+      1px solid var(--border);
+
+    background: transparent;
+
+    font-size: 0;
+  }
+
+  .race-nav-item.active {
+    background:
+      rgba(225, 6, 0, 0.1);
+
+    border-top:
+      2px solid var(--accent);
+  }
+
+  .race-nav-number {
+    font-size: 14px;
+  }
+
+  .race-nav-title {
+    display: none;
+  }
+
+  .race-section {
+    min-height: 100svh;
+
+    padding:
+      calc(var(--hud-height) + 40px)
+      25px
+      90px;
+  }
+
+  .section-inner h1 {
+    font-size: 72px;
+
+    letter-spacing: -2px;
+  }
+
+  .section-inner h2 {
+    font-size: 65px;
+  }
+
+  .section-inner p {
+    font-size: 13px;
+  }
+
+  .telemetry-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .telemetry-grid > div {
+    border-right: 0;
+
+    border-bottom:
+      1px solid var(--border);
+  }
+
+  .telemetry-grid > div:last-child {
+    border-bottom: 0;
+  }
+
+  .achievement-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-list {
+    grid-template-columns: 1fr;
+  }
+
+  .trophy {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+  .trophy-icon {
+    grid-column:
+      1 / -1;
+  }
+
+  .trophy > div {
+    border-bottom:
+      1px solid var(--border);
+  }
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,6 @@
+$kind: collection
+name: Portfolio Backend API
+description: REST API for the Portfolio Backend — a Spring Boot + MongoDB application running on `http://localhost:8080`.
+variables:
+  - key: baseUrl
+    value: 'http://localhost:8080'

@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: portfolio_backend
+
+  mongodb:
+    uri: mongodb://localhost:27017/portfolio?uuidRepresentation=standard
+
+server:
+  port: ${SERVER_PORT:8080}
